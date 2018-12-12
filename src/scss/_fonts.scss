@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'Suisse';
+    src: url('../assets/fonts/Suisse-Light.otf');
+}
+
+@font-face {
+    font-family: 'Suisse';
+    src: url('../assets/fonts/SuisseIntl-Medium-WebM.woff2') format('woff2'),
+       url('../assets/fonts/SuisseIntl-Medium-WebM.woff') format('woff'),
+       url('../assets/fonts/SuisseIntl-Medium-WebM.ttf')  format('truetype'),
+       url('../assets/fonts/SuisseIntl-Medium-WebM.svg') format('svg');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Suisse-Mono';
+    src: url('../assets/fonts/SuisseIntlMono-Regular.otf');
+}
+
+@font-face {
+    font-family: 'Aktiv';
+    src: url('../assets/fonts/AktivGroteskEx_Lt.ttf')  format('truetype');
+}
+
+@font-face {
+    font-family: 'Aktiv';
+    src: url('../assets/fonts/AktivGroteskEx_XBd.ttf')  format('truetype');
+    font-weight: bold;
+}

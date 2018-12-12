@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-primary;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: $color-main;
+    font-size: 14px;
+
+    @media screen and (max-width: 1180px) {
+        font-size: 12px;
+    }
+
+    ::-webkit-scrollbar {
+        background-color:#fff;
+        width: 1px;
+        height: 1px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: $color-main-light;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: $color-main;
+      outline: 1px solid $color-main;
+    }
+}
+
+h1 {
+    font-size: 50px;
+    margin: 0;
+    font-family: $font-secondary;
+    letter-spacing: 0.001em;
+
+    @media screen and (max-width: 1180px) {
+        font-size: 40px;
+    }
+
+    @media screen and (max-width: 767px) {
+        font-size: 30px;
+    }
+}
+
+h3 {
+    font-size: 24px;
+    font-family: $font-secondary;
+    margin: 0;
+    padding: 0;
+
+    @media screen and (max-width: 1180px) {
+        font-size: 18px;
+    }
+}
+
+input {
+    border: solid 1px $color-main;
+    padding: 25px 30px 20px;
+    font-size: 14px;
+    width: 100%;
+    background: transparent;
+
+    @media screen and (max-width: 1180px) {
+        font-size: 12px;
+    }
+}
+
+a {
+    color: $color-main;
+    text-decoration: none;
+    transition: all .3s ease;
+}
