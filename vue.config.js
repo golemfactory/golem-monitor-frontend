@@ -1,4 +1,16 @@
 module.exports = {
+  devServer: {
+    proxy: {
+      "/v1/nodes": {
+        target: "http://localhost:8081/",
+        secure: false
+      },
+      "/dump": {
+        target: "http://localhost:8081",
+        secure: false
+      }
+    }
+  },
   css: {
     loaderOptions: {
       sass: {

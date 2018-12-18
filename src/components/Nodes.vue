@@ -1,7 +1,7 @@
 <template>
     <div class="nodes" v-bind:class="{ nopadding: inSearchMode }">
         <div class="container" v-show="!inSearchMode">
-            <HeadingWrapper heading="Nodes in the network" number="03" text="node list" />
+            <HeadingWrapper heading="Nodes in the network" number="02" text="node list" />
         </div>
         <div class="nodes__wrapper">
 
@@ -27,15 +27,15 @@
                     <div class="nodes__container">
                         <div class="nodes__part">
                             <span class="nodes__name-mobile">Node name</span>
-                            <span class="nodes__part-text">{{node.name}}</span>
+                            <span class="nodes__part-text">{{node.node_name}}</span>
                         </div>
                         <div class="nodes__part">
                             <span class="nodes__name-mobile">Node ID</span>
-                            <span class="nodes__part-text">{{node.id}}</span>
+                            <span class="nodes__part-text">{{node.cliid}}</span>
                         </div>
                         <div class="nodes__part">
                             <span class="nodes__name-mobile">Network</span>
-                            <span class="nodes__part-text">{{node.network}}</span>
+                            <span class="nodes__part-text">{{node.net}}</span>
                         </div>
                         <div class="nodes__part">
                             <span class="nodes__name-mobile">Version</span>
@@ -47,15 +47,15 @@
                         </div>
                         <div class="nodes__part">
                             <span class="nodes__name-mobile">Computed tasks</span>
-                            <span class="nodes__part-text">{{node.computed_tasks}}</span>
+                            <span class="nodes__part-text">{{node.completed}}</span>
                         </div>
                         <div class="nodes__part">
                             <span class="nodes__name-mobile">Requested tasks</span>
-                            <span class="nodes__part-text">{{node.requested_tasks}}</span>
+                            <span class="nodes__part-text">{{node.tasks_requested}}</span>
                         </div>
                         <div class="nodes__part">
                             <span class="nodes__name-mobile">Last seen</span>
-                            <span class="nodes__part-text">{{node.last_seen}}</span>
+                            <span class="nodes__part-text">{{node.timestamp}}</span>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                             <div class="nodes-more__column">
                             <div class="nodes-more__item">
                                 <div class="nodes-more__column-inner"><b>Node name</b></div>
-                                <div class="nodes-more__column-inner">{{node.name}}</div>
+                                <div class="nodes-more__column-inner">{{node.node_name}}</div>
                             </div>
                             <div class="nodes-more__item">
                                 <div class="nodes-more__column-inner"><b>Operating system</b></div>
@@ -181,7 +181,7 @@
         computed: {
             filteredList() {
                 return this.nodes.filter(node => {
-                  return node.name.toLowerCase().includes(this.search.toLowerCase())
+                  return node.node_name.toLowerCase().includes(this.search.toLowerCase())
                 })
             }
         },
@@ -199,6 +199,7 @@
 
 <style lang="scss">
     .nodes {
+        background-color: $color-main-light;
         padding: 60px 0;
         &.nopadding {
             padding-top: 0;
@@ -282,6 +283,8 @@
             @media screen and (max-width: 1180px) {
                 width: 50%;
             }
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
 
         &__item {

@@ -65,7 +65,7 @@
         name: 'Home',
         components: {
             Top,
-            Aggregate,
+            //Aggregate,
             Nodes,
             FooterComponent
         },
@@ -90,34 +90,23 @@
 
         methods: {
             updateData: function() {
-                this.updateDataGlobal();
-                this.updateDataAggregate();
-                this.updateDataNodes();
-            },
-
-            updateDataGlobal() {
                 axios
-                .get('/data_global.json')
-                .then((response) => {
-                    data_global = _.extend(data_global, response.data);
-                })
-            },
-
-            updateDataAggregate() {
-                axios
-                .get('/data_aggregate.json')
-                .then((response) => {
-                    data_aggregate = _.extend(data_aggregate, response.data);
-                })
-            },
-            updateDataNodes() {
-                axios
-                .get('/data_nodes.json')
+                .get('/v1/nodes')
                 .then((response) => {
                     data_nodes.length = 0;
                     _.each(response.data, function(node) {
-                        data_nodes.push(node)
-                    })
+                        data_nodes.push(node);
+                    });
+                    data_global.nodes = data_nodes.length;
+                    data_global.cores = _.reduce(data_nodes, function(memo, val) {
+                        return memo + parseInt(val.num_cores);
+                    }, 0);
+                    data_global.ram = Math.round(_.reduce(data_nodes, function(memo, val) {
+                        return memo + parseInt(val.max_memory_size);
+                    }, 0) / 1000000);
+                    data_global.hdd = Math.round(_.reduce(data_nodes, function(memo, val) {
+                        return memo + parseInt(val.max_resource_size);
+                    }, 0) / 1000000);
                 })
             }
         },
