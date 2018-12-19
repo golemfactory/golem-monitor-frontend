@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <Top :dataValues="data_global"/>
-        <Aggregate :dataValues="data_aggregate"/>
+        <!--Aggregate :dataValues="data_aggregate"/-->
         <Nodes :nodes="data_nodes"/>
         <FooterComponent />
     </div>
@@ -99,6 +99,7 @@
                     _.each(response.data, function(node) {
                         date_displayed.setSeconds((date_now - node.timestamp) / 1000);
                         node.last_seen = date_displayed.toISOString().substr(11, 8);
+                        if (!node.node_name) node.node_name = "(Anonymous)";
                         data_nodes.push(node);
                     });
                     data_global.nodes = data_nodes.length;
