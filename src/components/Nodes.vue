@@ -51,7 +51,7 @@
                         </div>
                         <div class="nodes__part">
                             <span class="nodes__name-mobile">Requested tasks</span>
-                            <span class="nodes__part-text">{{node.tasks_requested}}</span>
+                            <span class="nodes__part-text">{{node.rs_tasks_cnt}}</span>
                         </div>
                         <div class="nodes__part">
                             <span class="nodes__name-mobile">Last seen</span>
@@ -91,15 +91,11 @@
                         <div class="nodes-more__column">
                             <div class="nodes-more__item">
                                 <div class="nodes-more__column-inner"><b>Requested tasks</b></div>
-                                <div class="nodes-more__column-inner">{{node.tasks_requested}}</div>
+                                <div class="nodes-more__column-inner">{{node.rs_tasks_cnt}}</div>
                             </div>
                             <div class="nodes-more__item">
                                 <div class="nodes-more__column-inner"><b>Finished tasks</b></div>
                                 <div class="nodes-more__column-inner">{{node.rs_finished_task_cnt}}</div>
-                            </div>
-                            <div class="nodes-more__item">
-                                <div class="nodes-more__column-inner"><b>Requested subtasks</b></div>
-                                <div class="nodes-more__column-inner">{{node.rs_requested_subtasks_cnt}}</div>
                             </div>
                             <div class="nodes-more__item">
                                 <div class="nodes-more__column-inner"><b>Collected results</b></div>
@@ -112,6 +108,11 @@
                         </div>
                         <div class="nodes-more__column">
                             <div class="nodes-more__item">
+                                <div class="nodes-more__column-inner"><b>Requested subtasks</b></div>
+                                <div class="nodes-more__column-inner">{{node.rs_requested_subtasks_cnt}}</div>
+                            </div>
+
+                            <div class="nodes-more__item">
                                 <div class="nodes-more__column-inner"><b>Timed out subtasks</b></div>
                                 <div class="nodes-more__column-inner">{{node.rs_timed_out_subtasks_cnt}}</div>
                             </div>
@@ -122,10 +123,6 @@
                             <div class="nodes-more__item">
                                 <div class="nodes-more__column-inner"><b>Failed subtasks</b></div>
                                 <div class="nodes-more__column-inner">{{node.rs_failed_subtasks_cnt}}</div>
-                            </div>
-                            <div class="nodes-more__item">
-                                <div class="nodes-more__column-inner"><b>Work offers</b></div>
-                                <div class="nodes-more__column-inner">{{node.rs_work_offers_cnt}}</div>
                             </div>
                         </div>
                     </div>

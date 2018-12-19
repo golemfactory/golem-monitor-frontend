@@ -57,7 +57,7 @@
         "tasks_error": "",
         "tasks_requested": "",
         "tasks_timeout": ""
-    }
+    };
 
     var data_nodes = [];
 
@@ -81,7 +81,7 @@
             var that = this;
             setInterval(function() {
                 that.updateData();
-            }, 5000)
+            }, 15000)
 
             this.$root.$on('updateData', function() {
                 that.updateData();
@@ -94,11 +94,10 @@
                 .get('/v1/nodes')
                 .then((response) => {
                     data_nodes.length = 0;
-                    var date_now = new Date().getTime();
-                    var date_displayed = new Date();
+                    let date_now = new Date().getTime();
                     _.each(response.data, function(node) {
-                        date_displayed.setSeconds((date_now - node.timestamp) / 1000);
-                        node.last_seen = date_displayed.toISOString().substr(11, 8);
+                        let time_diff = (date_now - parseInt(node.timestamp)) / 1000;
+                        node.last_seen = '' + time_diff.toFixed(0) + ' s';
                         if (!node.node_name) node.node_name = "(Anonymous)";
                         data_nodes.push(node);
                     });

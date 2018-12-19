@@ -3,8 +3,8 @@ module.exports = {
   devServer: {
     proxy: {
       "/v1/nodes": {
-        target: "http://localhost:8081/",
-        secure: false
+        target: "https://stats.golem.network",
+        secure: true
       },
       "/dump": {
         target: "http://localhost:8081",
