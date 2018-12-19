@@ -104,13 +104,13 @@
                     });
                     data_global.nodes = data_nodes.length;
                     data_global.cores = _.reduce(data_nodes, function(memo, val) {
-                        return memo + parseInt(val.num_cores);
+                        return memo + (!val.num_cores ? 0 : parseInt(val.num_cores));
                     }, 0);
                     data_global.ram = (_.reduce(data_nodes, function(memo, val) {
-                        return memo + parseInt(val.max_memory_size);
+                        return memo + (!val.max_memory_size ? 0 : parseInt(val.max_memory_size));
                     }, 0) / 1024 / 1024 / 1024).toFixed(2);
                     data_global.hdd = (_.reduce(data_nodes, function(memo, val) {
-                        return memo + parseInt(val.max_resource_size);
+                        return memo + (!val.max_resource_size ? 0 : parseInt(val.max_resource_size));
                     }, 0) / 1024 / 1024 / 1024).toFixed(2);
                 })
             }
