@@ -11,7 +11,7 @@
                 </div>
                 <div class="form__btns">
                     <div class="form__btn" v-on:click="onRefresh"><img class="form__refresh-img" src="../assets/img/Refresh.svg" alt="" /> force refresh</div>
-                    <a class="form__btn" href="dump"><img class="form__export-img" src="../assets/img/Export.svg" alt="" /> csv export</a>
+                    <a class="form__btn" href="/dump"><img class="form__export-img" src="../assets/img/Export.svg" alt="" /> csv export</a>
                 </div>
             </div>
             <HeadingWrapper v-show="!inSearchMode" heading="Global network data" number="01" text="total current golem.network data" />
@@ -20,16 +20,16 @@
                     <span>Nodes: <b>{{dataValues.nodes}}</b></span>
                 </div>
                 <div class="details__item">
-                    <span>Cores: <b>{{dataValues.cores}}</b></span>
+                    <span>CPU Cores: <b>{{dataValues.cores}}</b></span>
                 </div>
                 <div class="details__item">
-                    <span>Ram (Gb): <b>{{dataValues.ram}}</b></span>
+                    <span>RAM (TiB): <b>{{dataValues.ram}}</b></span>
                 </div>
                 <!--div class="details__item">
                     <span>GPU Cores: <b>{{dataValues.gpu_cores}}</b></span>
                 </div-->
                 <div class="details__item">
-                    <span>Disk (Gb): <b>{{dataValues.hdd}}</b></span>
+                    <span>Disk (TiB): <b>{{dataValues.hdd}}</b></span>
                 </div>
             </div>
         </div>

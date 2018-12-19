@@ -9,7 +9,7 @@
 
 <script>
     import Top from '@/components/Top.vue';
-    import Aggregate from '@/components/Aggregate.vue';
+    //import Aggregate from '@/components/Aggregate.vue';
     import Nodes from '@/components/Nodes.vue';
     import FooterComponent from '@/components/FooterComponent';
     import axios from 'axios'
@@ -94,19 +94,23 @@
                 .get('/v1/nodes')
                 .then((response) => {
                     data_nodes.length = 0;
+                    var date_now = new Date().getTime();
+                    var date_displayed = new Date();
                     _.each(response.data, function(node) {
+                        date_displayed.setSeconds((date_now - node.timestamp) / 1000);
+                        node.last_seen = date_displayed.toISOString().substr(11, 8);
                         data_nodes.push(node);
                     });
                     data_global.nodes = data_nodes.length;
                     data_global.cores = _.reduce(data_nodes, function(memo, val) {
                         return memo + parseInt(val.num_cores);
                     }, 0);
-                    data_global.ram = Math.round(_.reduce(data_nodes, function(memo, val) {
+                    data_global.ram = (_.reduce(data_nodes, function(memo, val) {
                         return memo + parseInt(val.max_memory_size);
-                    }, 0) / 1000000);
-                    data_global.hdd = Math.round(_.reduce(data_nodes, function(memo, val) {
+                    }, 0) / 1024 / 1024 / 1024).toFixed(2);
+                    data_global.hdd = (_.reduce(data_nodes, function(memo, val) {
                         return memo + parseInt(val.max_resource_size);
-                    }, 0) / 1000000);
+                    }, 0) / 1024 / 1024 / 1024).toFixed(2);
                 })
             }
         },

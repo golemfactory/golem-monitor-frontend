@@ -55,7 +55,7 @@
                         </div>
                         <div class="nodes__part">
                             <span class="nodes__name-mobile">Last seen</span>
-                            <span class="nodes__part-text">{{node.timestamp}}</span>
+                            <span class="nodes__part-text">{{node.last_seen}}</span>
                         </div>
                     </div>
                 </div>
@@ -73,25 +73,25 @@
                             </div>
                             <div class="nodes-more__item">
                                 <div class="nodes-more__column-inner"><b>Operating system</b></div>
-                                <div class="nodes-more__column-inner">{{node.system}}</div>
+                                <div class="nodes-more__column-inner">{{node.os}}</div>
                             </div>
                             <div class="nodes-more__item">
                                 <div class="nodes-more__column-inner"><b>CPU cores</b></div>
-                                <div class="nodes-more__column-inner">{{node.cpu_cores}}</div>
+                                <div class="nodes-more__column-inner">{{node.num_cores}}</div>
                             </div>
                             <div class="nodes-more__item">
                                 <div class="nodes-more__column-inner"><b>RAM</b></div>
-                                <div class="nodes-more__column-inner">{{node.ram}}</div>
+                                <div class="nodes-more__column-inner">{{node.max_memory_size}}</div>
                             </div>
                             <div class="nodes-more__item">
                                 <div class="nodes-more__column-inner"><b>Disk</b></div>
-                                <div class="nodes-more__column-inner">{{node.hdd}}</div>
+                                <div class="nodes-more__column-inner">{{node.max_resource_size}}</div>
                             </div>
                         </div>
                         <div class="nodes-more__column">
                             <div class="nodes-more__item">
                                 <div class="nodes-more__column-inner"><b>Requested tasks</b></div>
-                                <div class="nodes-more__column-inner">{{node.requested_tasks}}</div>
+                                <div class="nodes-more__column-inner">{{node.tasks_requested}}</div>
                             </div>
                             <div class="nodes-more__item">
                                 <div class="nodes-more__column-inner"><b>Finished tasks</b></div>
