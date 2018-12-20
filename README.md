@@ -1,5 +1,9 @@
 # golem-monitor
 
+Web frontend for https://stats.golem.network.
+
+Compatible with [golem-monitor-replicator](https://github.com/golemfactory/golem-monitor-replicator) as a backend.
+
 ## Project setup
 ```
 yarn install
