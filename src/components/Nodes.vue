@@ -81,11 +81,11 @@
                             </div>
                             <div class="nodes-more__item">
                                 <div class="nodes-more__column-inner"><b>RAM</b></div>
-                                <div class="nodes-more__column-inner">{{node.max_memory_size}}</div>
+                                <div class="nodes-more__column-inner">{{node.max_memory_size}} GiB</div>
                             </div>
                             <div class="nodes-more__item">
                                 <div class="nodes-more__column-inner"><b>Disk</b></div>
-                                <div class="nodes-more__column-inner">{{node.max_resource_size}}</div>
+                                <div class="nodes-more__column-inner">{{node.max_resource_size}} GiB</div>
                             </div>
                         </div>
                         <div class="nodes-more__column">

@@ -93,24 +93,38 @@
                 axios
                 .get('/v1/nodes')
                 .then((response) => {
+                    let cores = 0, ram = 0, hdd = 0;
                     data_nodes.length = 0;
+
+                    function toGiB(kb) {
+                        kb = !kb ? 0 : parseInt(kb);
+                        return kb / 1024 / 1024;
+                    }
+
                     let date_now = new Date().getTime();
                     _.each(response.data, function(node) {
+                        let node_cores = (!node.num_cores ? 0 : parseInt(node.num_cores));
+                        let node_ram = toGiB(node.max_memory_size);
+                        let node_hdd = toGiB(node.max_resource_size);
                         let time_diff = (date_now - parseInt(node.timestamp)) / 1000;
+
                         node.last_seen = '' + time_diff.toFixed(0) + ' s';
+                        node.num_cores = node_cores;
+                        node.max_memory_size = node_ram.toFixed(2);
+                        node.max_resource_size = node_hdd.toFixed(2);
+
                         if (!node.node_name) node.node_name = "(Anonymous)";
+
+                        cores += node_cores;
+                        ram += node_ram;
+                        hdd += node_hdd;
                         data_nodes.push(node);
                     });
+
                     data_global.nodes = data_nodes.length;
-                    data_global.cores = _.reduce(data_nodes, function(memo, val) {
-                        return memo + (!val.num_cores ? 0 : parseInt(val.num_cores));
-                    }, 0);
-                    data_global.ram = (_.reduce(data_nodes, function(memo, val) {
-                        return memo + (!val.max_memory_size ? 0 : parseInt(val.max_memory_size));
-                    }, 0) / 1024 / 1024 / 1024).toFixed(2);
-                    data_global.hdd = (_.reduce(data_nodes, function(memo, val) {
-                        return memo + (!val.max_resource_size ? 0 : parseInt(val.max_resource_size));
-                    }, 0) / 1024 / 1024 / 1024).toFixed(2);
+                    data_global.cores = cores;
+                    data_global.ram = (ram / 1024).toFixed(2);
+                    data_global.hdd = (hdd / 1024).toFixed(2);
                 })
             }
         },
