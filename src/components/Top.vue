@@ -3,7 +3,7 @@
         <div class="container">
             <div class="top">
                 <img class="top__logo" src="../assets/img/golem-logo.png" alt="logo">
-                <h1 class="top__heading">Simple<br/>golem.network<br />statistics page</h1>
+                <h1 class="top__heading">network statistics</h1>
             </div>
             <div class="form">
                 <div class="form__search">
@@ -69,7 +69,7 @@
 
 <style lang="scss">
     .top {
-        padding: 60px 0;
+        padding: 45px 0;
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
@@ -98,7 +98,7 @@
     }
 
     .form {
-        padding: 20px 0;
+        padding: 0;
         margin-bottom: 75px;
         display: flex;
         justify-content: space-between;
@@ -198,7 +198,7 @@
     }
 
     .details {
-        padding: 20px 0;
+        padding: 0;
         margin-bottom: 30px;
         display: flex;
         font-size: 15px;
