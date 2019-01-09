@@ -10,7 +10,7 @@
                     <input type="text" placeholder="FIND YOUR NODE" v-model="search" v-on:keyup="onSearchType">
                 </div>
                 <div class="form__btns">
-                    <div class="form__btn" v-on:click="onRefresh"><img class="form__refresh-img" src="../assets/img/Refresh.svg" alt="" /> force refresh</div>
+                    <!-- <div class="form__btn" v-on:click="onRefresh"><img class="form__refresh-img" src="../assets/img/Refresh.svg" alt="" /> force refresh</div> -->
                     <a class="form__btn" href="/dump"><img class="form__export-img" src="../assets/img/Export.svg" alt="" /> csv export</a>
                 </div>
             </div>
