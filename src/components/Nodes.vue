@@ -22,7 +22,7 @@
 
 
 
-            <div v-for="node in filteredList" :key="node.id" class="nodes__item" v-on:click="openMore">
+            <div v-for="node in filteredList" :key="node.id" class="nodes__item" v-bind:class="{ opened: selection === node.cliid }" v-on:click="openMore($event, node.cliid)">
                 <div class="nodes__row">
                     <div class="nodes__container">
                         <div class="nodes__part">
@@ -149,30 +149,18 @@
             return {
                 btnOpened: false,
                 inSearchMode: false,
-                search: ""
+                search: "",
+                selection: undefined,
             }
         },
         methods: {
-            openMore: function (e) {
-                var elem = e.target;
-                var item = elem.closest('.nodes__item');
-                var nodes = document.querySelectorAll('.nodes__item');
-
-                nodes.forEach(node => {
-                    node.classList.remove('opened');
-                })
-
-                if (!item.classList.contains('opened')) {
-                    item.classList.add('opened');
-                }
+            openMore: function(event, cliid) {
+                this.selection = cliid;
             },
-            closeMore: function (e) {
-                e.stopPropagation();
-                var nodes = document.querySelectorAll('.nodes__item');
-
-                nodes.forEach(node => {
-                    node.classList.remove('opened');
-                })
+            closeMore: function (event) {
+                this.selection = undefined;
+                var row = event.target.closest('.nodes__item');
+                row.classList.remove('opened');
             }
         },
         computed: {
