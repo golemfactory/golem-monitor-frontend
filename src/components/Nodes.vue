@@ -235,7 +235,7 @@
         &__container {
             @extend .container;
             display: flex;
-            padding: 30px 0;
+            padding: 15px 0;
             border-bottom: solid 1px $color-main;
 
             @media screen and (max-width: 1180px) {
