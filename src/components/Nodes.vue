@@ -155,12 +155,13 @@
         },
         methods: {
             openMore: function(event, cliid) {
-                this.selection = cliid;
+                if (this.selection == cliid)
+                    this.$emit('closeMore', event);
+                else
+                    this.selection = cliid;
             },
             closeMore: function (event) {
-                this.selection = undefined;
-                var row = event.target.closest('.nodes__item');
-                row.classList.remove('opened');
+                this.$emit('closeMore', event);
             }
         },
         computed: {
@@ -177,6 +178,12 @@
             });
             this.$root.$on('searchPhraseUpdate', function(search) {
                 that.inSearchMode = Boolean(search);
+            });
+            this.$on('closeMore', function(event) {
+                that.selection = undefined;
+
+                var row = event.target.closest('.nodes__item');
+                row.classList.remove('opened');
             });
         }
     }
